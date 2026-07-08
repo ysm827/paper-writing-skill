@@ -81,6 +81,7 @@ Claude MUST read these files from this skill's directory. They contain the detai
 |---|---|
 | `author_profile/editorial_principles.md` | 14 cross-paper principles with evidence (introduction-twice, named-over-vague, what→why→so-what headings, compress-after-expanding, etc.) |
 | `author_profile/voice_profile.md` | Sentence-level style: ~21 word mean, claim-first topic sentences, zero hedging, active voice, banned words, paragraph density, tone |
+| `author_profile/de_ai_checklist.md` | **De-AI + Shenker voice: bans em-dashes, antithesis/mirror flourishes, editorializing closers, vacuous intensifiers, rule-of-three decoration, throat-clearing openers; the Shenker plain-declarative register; a mechanical grep gate. Run on every tex edit.** |
 | `author_profile/compression_patterns.md` | 7 compression operations with before/after examples and quantitative benchmarks |
 | `author_profile/rhetorical_moves.md` | Cross-section move sequences for introduction (6 moves), design (5 moves), evaluation (6 moves), related work (3 moves) |
 | `author_profile/intervention_types.md` | 7 types of advisor interventions — use this to simulate advisor feedback on drafts |
@@ -115,8 +116,9 @@ These are extracted from the detailed files above. In case of conflict, the file
 
 **Before presenting or committing ANY new or modified tex content, Claude MUST run a sentence-level style audit.** This is not optional, not triggered by the user, and not limited to full section drafts — it applies to every edit, including paragraph-level changes, subsection additions, and overview rewrites.
 
-The audit checks every changed sentence against `author_profile/voice_profile.md` and `author_profile/compression_patterns.md`. Specifically, scan for and fix:
+The audit checks every changed sentence against `author_profile/voice_profile.md`, `author_profile/compression_patterns.md`, and `author_profile/de_ai_checklist.md`. Specifically, scan for and fix:
 
+0. **De-AI + Shenker voice (`de_ai_checklist.md`) — run FIRST, with its mechanical greps.** Em-dashes (`---`, `—`, ` -- `) are BANNED. Antithesis/mirror flourishes ("X, not Y"; "whatever it is called"), editorializing closers ("the saving is the point", "is not real"), vacuous intensifiers ("in effect", "at its core"), rule-of-three decoration, and throat-clearing openers ("Moreover", "Notably") are BANNED. Target the plain, short, declarative Shenker register. Do NOT report the audit as passed without running the grep gate in that file.
 1. **Negation-first constructions**: "not X" or "rather than X" where the sentence should assert what something IS. Reframe positively.
 2. **Throat-clearing**: "We address this problem by", "To address this issue", "In order to", "It should be noted that", "Note that". Delete and lead with the action.
 3. **Hedging**: "can potentially", "can be expected to", "may help reduce", "it is possible that". Replace with assertive voice ("produces", "reduces", "achieves").
@@ -125,7 +127,7 @@ The audit checks every changed sentence against `author_profile/voice_profile.md
 6. **Passive voice**: "accuracy was achieved by X" → "X achieves". "Experiments were conducted on X" → "We evaluate on X". Active voice everywhere — no exceptions.
 7. **Missing citations**: Technical claims restated from other sections must carry forward their citations (Principle 14).
 
-**Process**: After writing, read the changed text line by line. Fix all violations. Report a summary table of violations found and fixed (category, count). Only then present the draft or commit.
+**Process**: After writing, (a) run the mechanical grep gate in `de_ai_checklist.md` Part D and fix every hit, then (b) read the changed text line by line for the items above. Report a summary table of violations found and fixed (category, count), INCLUDING the grep counts (em-dashes, flourishes) — not just "audited". Never claim the audit passed on a mental pass alone. Only then present the draft or commit.
 
 This gate is SEPARATE from and IN ADDITION TO the structural section checklists below.
 
