@@ -4,6 +4,9 @@
 # Project context (per-paper, contains strategic framing notes)
 project_context.md
 
+# Internal working notes / reflections (kept local for future iterations, not published)
+reflections/
+
 # Editor files
 *.swp
 *.swo
